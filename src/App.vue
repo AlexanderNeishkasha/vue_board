@@ -19,6 +19,10 @@ export default {
       AppContent,
       AppSidebar
   },
+  beforeCreate() {
+      this.$store.dispatch('users/loadUsersFromStorage');
+      this.$store.dispatch('currentUser/loadFromStorage');
+  },
   beforeMount() {
       Materialize.updateTextFields();
   }

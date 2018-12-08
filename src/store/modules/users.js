@@ -15,12 +15,8 @@ export default {
         }
     },
     mutations: {
-        addUser(state, {username, password, created_at}) {
-            return state.users.push({
-                username,
-                password,
-                created_at
-            });
+        addUser(state, user) {
+            return state.users.push(user);
         },
         register(state, {username, password}) {
             state.users.push({
@@ -28,6 +24,7 @@ export default {
                 password: md5(password),
                 created_at: Date.now()
             });
+            localStorage.setItem('users', JSON.stringify(state.users));
         }
     },
     actions: {
@@ -36,6 +33,14 @@ export default {
         },
         register(store, userinfo) {
             store.commit('register', userinfo);
+        },
+        loadUsersFromStorage(store) {
+            try {
+                let users = JSON.parse(localStorage.getItem('users'));
+                users.forEach(user => store.commit('addUser', user));
+            } catch (e) {
+                console.log(e);
+            }
         }
     }
 }

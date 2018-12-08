@@ -11,9 +11,11 @@ export default {
     mutations: {
         login(state, user) {
             state.user = user;
+            localStorage.setItem('current_user', JSON.stringify(user));
         },
         logout(state) {
             state.user = {};
+            localStorage.removeItem('current_user');
         }
     },
     actions: {
@@ -22,6 +24,15 @@ export default {
         },
         logout(store) {
             store.commit('logout');
+        },
+        loadFromStorage(store) {
+            let user;
+            try {
+                user = JSON.parse(localStorage.getItem('current_user'));
+                if (user != null) store.commit('login', user);
+            } catch(e) {
+                console.log(e);
+            }
         }
     }
 }
