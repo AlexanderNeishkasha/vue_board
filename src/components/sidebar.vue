@@ -1,5 +1,5 @@
 <template>
-    <div class="col s4 z-depth-2 sidebar">
+    <div class="col s4 sidebar">
         <transition appear mode="out-in"
                     enter-active-class="animated fadeIn"
                     leave-active-class="animated fadeOut"
@@ -34,5 +34,6 @@
 <style scoped>
     .sidebar {
         overflow: hidden;
+        border-right: 1px solid #9e9e9e;
     }
 </style>

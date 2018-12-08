@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="container">
-        <div class="row">
+        <div class="row wrapper">
             <app-sidebar></app-sidebar>
             <app-content></app-content>
         </div>
@@ -34,5 +34,9 @@
     .container {
         margin-top: 20px;
         margin-bottom: 20px;
+        height: 100%;
+    }
+    .wrapper {
+        height: 100%;
     }
 </style>

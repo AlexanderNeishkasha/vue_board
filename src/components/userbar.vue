@@ -1,8 +1,13 @@
 <template>
     <div class="userbar">
-        <div class="userbar_name center-align">Hello, <b>{{ username }}</b></div>
+        <h5 class="userbar_name ">Hello, <b>{{ username }}</b></h5>
         <div class="controls">
-            <button class="btn-small waves-effect waves-light">Create Ad</button>
+            <router-link :to="{name: 'create'}"
+                         tag="button"
+                         class="btn-small waves-effect waves-light"
+            >
+                Create Ad
+            </router-link>
             <a @click="logout">Logout</a>
         </div>
     </div>
@@ -29,15 +34,18 @@
     .userbar {
         padding: 10px;
     }
+
     .controls {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         margin-top: 10px;
     }
+
     a {
         cursor: pointer;
     }
+
     a:hover {
         text-decoration: underline;
     }
