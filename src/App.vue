@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <div class="row">
+      <app-sidebar></app-sidebar>
+      <app-content></app-content>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import 'materialize-css/dist/css/materialize.min.css';
+import AppContent from './components/content';
+import AppSidebar from './components/sidebar';
+import Materialize from 'materialize-css';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+      AppContent,
+      AppSidebar
+  },
+  beforeMount() {
+      Materialize.updateTextFields();
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 </style>
