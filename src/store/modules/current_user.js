@@ -30,7 +30,7 @@ export default {
             try {
                 user = JSON.parse(localStorage.getItem('current_user'));
                 if (user != null) store.commit('login', user);
-            } catch(e) {
+            } catch (e) {
                 console.log(e);
             }
         }

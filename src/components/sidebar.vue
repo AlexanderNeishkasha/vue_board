@@ -1,7 +1,12 @@
 <template>
-    <div class="col s4 z-depth-2">
-        <app-login-form v-if="checkEmptyUsername"></app-login-form>
-        <app-user-bar v-else :username="user.username"></app-user-bar>
+    <div class="col s4 z-depth-2 sidebar">
+        <transition appear mode="out-in"
+                    enter-active-class="animated fadeIn"
+                    leave-active-class="animated fadeOut"
+        >
+            <app-login-form v-if="checkEmptyUsername"></app-login-form>
+            <app-user-bar v-else :username="user.username"></app-user-bar>
+        </transition>
     </div>
 </template>
 
@@ -25,3 +30,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .sidebar {
+        overflow: hidden;
+    }
+</style>
