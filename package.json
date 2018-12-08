@@ -11,6 +11,7 @@
     "animate.css": "^3.7.0",
     "materialize-css": "^1.0.0-rc.2",
     "md5": "^2.2.1",
+    "uniqid": "^5.0.3",
     "vue": "^2.5.17",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"

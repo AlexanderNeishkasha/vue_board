@@ -15,6 +15,8 @@
 </template>
 
 <script>
+    import uniqid from 'uniqid';
+
     export default {
         name: 'editform',
         props: {
@@ -29,12 +31,14 @@
         methods: {
             createPost() {
                 let post = {
+                    id: uniqid(),
                     title: this.title,
                     description: this.description,
                     user: this.$store.getters['currentUser/user'].username,
                     created_at: Date.now()
                 };
-                console.log(post);
+                this.$store.commit('posts/addPost', post);
+                this.$router.push({name: 'showPost', params: {id: post.id}});
             }
         }
     }

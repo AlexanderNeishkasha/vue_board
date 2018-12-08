@@ -23,6 +23,7 @@
         beforeCreate() {
             this.$store.dispatch('users/loadUsersFromStorage');
             this.$store.dispatch('currentUser/loadFromStorage');
+            this.$store.dispatch('posts/loadFromStorage');
         },
         beforeMount() {
             Materialize.updateTextFields();
