@@ -30,10 +30,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .sidebar {
-        overflow: hidden;
-        border-right: 1px solid #9e9e9e;
-    }
-</style>

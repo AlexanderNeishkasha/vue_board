@@ -1,5 +1,5 @@
 <template>
-    <div class="userbar">
+    <div class="userbar white z-depth-2">
         <h5 class="userbar_name ">Hello, <b>{{ username }}</b></h5>
         <div class="controls">
             <router-link :to="{name: 'create'}"
@@ -8,7 +8,7 @@
             >
                 Create Ad
             </router-link>
-            <a @click="logout">Logout</a>
+            <a @click="logout" class="teal-text">Logout</a>
         </div>
     </div>
 </template>

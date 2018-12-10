@@ -30,14 +30,26 @@
         }
     }
 </script>
-
 <style scoped>
+    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
     .container {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         height: 100%;
     }
+
     .wrapper {
         height: 100%;
+    }
+</style>
+
+<style>
+    html, body, #app {
+        height: 100%;
+        background-color: #e0f7fa !important;
+    }
+    h1, h2 {
+        font-size: 28px;
     }
 </style>

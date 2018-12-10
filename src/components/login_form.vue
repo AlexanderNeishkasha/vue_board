@@ -1,5 +1,5 @@
 <template>
-    <form class="login-form" @submit.prevent="submit">
+    <form class="login-form white z-depth-1" @submit.prevent="submit">
         <div class="input-field">
             <input id="username" type="text" class="validate" v-model="username">
             <label for="username">Username</label>

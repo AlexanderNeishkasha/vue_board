@@ -6,6 +6,9 @@ export default {
     getters: {
         getPost: (state) => (id) => {
             return state.posts.find(item => item.id == id);
+        },
+        posts(state) {
+            return state.posts
         }
     },
     mutations: {
