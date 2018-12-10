@@ -1,11 +1,11 @@
 <template>
-    <transition-group>
+    <div>
         <app-homepost v-for="(post, index) in posts"
                       :key="index"
                       :post="post"
         >
         </app-homepost>
-    </transition-group>
+    </div>
 </template>
 
 <script>
