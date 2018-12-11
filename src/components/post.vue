@@ -17,8 +17,12 @@
                 </div>
             </div>
             <div class="post-control" v-if="author">
-                <router-link to="/" class="edit teal-text">Edit</router-link>
-                <a href="#delete" class="delete teal-text">Delete</a>
+                <router-link to="/" class="edit teal-text">
+                    <i class="material-icons tiny">edit</i> Edit
+                </router-link>
+                <a class="delete teal-text" @click.prevent="removePost">
+                    <i class="material-icons tiny">delete</i> Delete
+                </a>
             </div>
         </div>
     </div>
@@ -43,6 +47,14 @@
             },
             author() {
                 return this.$store.getters['currentUser/user'].username == this.post.user;
+            }
+        },
+        methods: {
+            removePost() {
+                if (this.post.user == this.$store.getters['currentUser/user'].username) {
+                    this.$store.dispatch('posts/removePost', this.post.id);
+                    this.$router.push({name: 'home'});
+                }
             }
         }
     }
@@ -74,8 +86,9 @@
     .post-control {
         display: flex;
         font-size: 12px;
+        margin-top: 5px;
     }
-    .created_by, .created_at {
+    .created_by, .created_at, .edit, .delete {
         display: flex;
         align-items: center;
         line-height: 1;
@@ -83,7 +96,10 @@
     .material-icons {
         margin-right: 2px;
     }
+    a:hover .material-icons {
+        text-decoration: none !important;
+    }
     .edit {
-        margin-right: 5px;
+        margin-right: 15px;
     }
 </style>
