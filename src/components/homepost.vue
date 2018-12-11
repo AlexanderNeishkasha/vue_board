@@ -21,7 +21,7 @@
         </div>
         <div class="post-control" v-if="author">
             <router-link to="/" class="edit teal-text">Edit</router-link>
-            <a href="#delete" class="delete teal-text">Delete</a>
+            <a href="#delete" class="delete teal-text" @click.prevent="removePost">Delete</a>
         </div>
     </div>
 </template>
@@ -37,10 +37,17 @@
         },
         computed: {
             time() {
-                return new Date(this.post.created_at).toLocaleTimeString('en-US');
+                return new Date(this.post.created_at).toLocaleString('en-US');
             },
             author() {
                 return this.$store.getters['currentUser/user'].username == this.post.user;
+            }
+        },
+        methods: {
+            removePost() {
+                if (this.post.user == this.$store.getters['currentUser/user'].username) {
+                    this.$store.dispatch('posts/removePost', this.post.id);
+                }
             }
         }
     }

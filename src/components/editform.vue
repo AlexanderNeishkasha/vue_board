@@ -49,7 +49,7 @@
                     user: this.$store.getters['currentUser/user'].username,
                     created_at: Date.now()
                 };
-                this.$store.commit('posts/addPost', post);
+                this.$store.dispatch('posts/addPost', post);
                 this.$router.push({name: 'showPost', params: {id: post.id}});
             }
         }

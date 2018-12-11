@@ -1,10 +1,19 @@
 <template>
     <div>
-        <app-homepost v-for="(post, index) in posts"
-                      :key="index"
-                      :post="post"
+        <transition-group
+                appear
+                name="posts"
+                tag="div"
+                mode="out-in"
+                enter-active-class="animated bounceInLeft"
+                leave-active-class="animated bounceOutRight"
         >
-        </app-homepost>
+            <app-homepost v-for="post in posts"
+                          :key="post.id"
+                          :post="post"
+            >
+            </app-homepost>
+        </transition-group>
     </div>
 </template>
 
