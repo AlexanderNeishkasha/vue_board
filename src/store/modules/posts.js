@@ -4,13 +4,23 @@ export default {
         posts: []
     },
     getters: {
-        getPost: (state) => (id) => {
+        getPost: state => id => {
             return state.posts.find(item => item.id == id);
         },
         posts(state) {
             return state.posts.sort((item1, item2) => {
                 return item1.created_at >= item2.created_at ? -1 : 1;
-            })
+            });
+        },
+        paginatePosts: state =>  pagination => {
+            let begin = pagination.page * pagination.count;
+            let end = begin + pagination.count;
+            return state.posts.sort((item1, item2) => {
+                return item1.created_at >= item2.created_at ? -1 : 1;
+            }).slice(begin, end);
+        },
+        countPosts(state) {
+            return state.posts.length;
         }
     },
     mutations: {
