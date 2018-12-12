@@ -13,15 +13,17 @@
                           :post="post"
             >
             </app-homepost>
+            <app-pagination
+                    :count="paginationCount"
+                    :current="currentPaginationPage"
+                    @next="next"
+                    @prev="prev"
+                    v-if="havePosts"
+                    key="pagination"
+            >
+            </app-pagination>
         </transition-group>
-        <app-pagination
-            :count="paginationCount"
-            :current="currentPaginationPage"
-            @next="next"
-            @prev="prev"
-            v-if="havePosts"
-        >
-        </app-pagination>
+
     </div>
 </template>
 
@@ -68,6 +70,6 @@
 
 <style scoped>
     .append {
-        animation-delay: 1.1s;
+        animation-delay: 1.05s;
     }
 </style>

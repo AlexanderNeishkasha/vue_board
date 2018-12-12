@@ -1,5 +1,5 @@
 <template>
-    <div class="col s4 sidebar">
+    <div class="col s12 m4 sidebar">
         <transition appear mode="out-in"
                     enter-active-class="animated fadeIn"
                     leave-active-class="animated fadeOut"
@@ -30,3 +30,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .sidebar {
+        margin-bottom: 20px;
+    }
+</style>

@@ -25,6 +25,7 @@
         methods: {
             logout() {
                 this.$store.dispatch('currentUser/logout');
+                this.$router.push({name: 'home'});
             }
         }
     }

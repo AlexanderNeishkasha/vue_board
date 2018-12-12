@@ -1,5 +1,5 @@
 <template>
-    <div class="col s8 content">
+    <div class="col s12 m8 content">
         <transition appear mode="out-in"
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut"
