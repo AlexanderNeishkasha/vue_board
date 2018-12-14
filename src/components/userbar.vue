@@ -2,7 +2,7 @@
     <div class="userbar white z-depth-2">
         <h5 class="userbar_name ">Hello, <b>{{ username }}</b></h5>
         <div class="controls">
-            <router-link :to="{name: 'create'}"
+            <router-link :to="{name: 'edit'}"
                          tag="button"
                          class="btn-small waves-effect waves-light"
             >

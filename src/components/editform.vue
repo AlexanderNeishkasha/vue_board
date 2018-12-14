@@ -1,11 +1,11 @@
 <template>
     <div>
         <app-breadcrumb
-                :link="{name: 'create'}"
+                :link="link"
                 link-name="Create Ad"
         >
         </app-breadcrumb>
-        <form class="edit-form white z-depth-2" @submit.prevent="createPost">
+        <form class="edit-form white z-depth-2" @submit.prevent="createOrEditPost">
 
             <div class="input-field">
                 <input id="title" type="text" class="validate" v-model="title">
@@ -27,17 +27,16 @@
 <script>
     import uniqid from 'uniqid';
     import AppBreadcrumb from './breadcrumb';
+    import Materialize from 'materialize-css';
 
     export default {
         name: 'editform',
         components: {
             AppBreadcrumb
         },
-        props: {
-            postId: null
-        },
         data() {
             return {
+                id: null,
                 title: '',
                 description: '',
                 errors: {
@@ -47,16 +46,14 @@
             }
         },
         methods: {
-            createPost() {
+            createOrEditPost() {
                 if (this.checkEmptyFields()) return false;
-                let post = {
-                    id: uniqid(),
-                    title: this.title,
-                    description: this.description,
-                    user: this.$store.getters['currentUser/user'].username,
-                    created_at: Date.now()
-                };
-                this.$store.dispatch('posts/addPost', post);
+                let post;
+                if (this.id == null) {
+                    post = this.createPost();
+                } else {
+                    post = this.updatePost();
+                }
                 this.$router.push({name: 'showPost', params: {id: post.id}});
             },
             checkEmptyFields() {
@@ -69,6 +66,26 @@
                     return true;
                 }
                 return false;
+            },
+            createPost() {
+                let post = {
+                    id: uniqid(),
+                    title: this.title,
+                    description: this.description,
+                    user: this.$store.getters['currentUser/user'].username,
+                    created_at: Date.now()
+                };
+                this.$store.dispatch('posts/addPost', post);
+                return post;
+            },
+            updatePost() {
+                let post = {
+                    id: this.id,
+                    title: this.title,
+                    description: this.description,
+                };
+                this.$store.dispatch('posts/editPost', post);
+                return post;
             }
         },
         watch: {
@@ -78,6 +95,28 @@
             description() {
                 this.errors.description = '';
             }
+        },
+        computed: {
+            link() {
+                return {name: 'edit', params: {id: this.id}};
+            }
+        },
+        created() {
+            if (this.$route.params.id == undefined) return true;
+            let post = this.$store.getters['posts/getPost'](this.$route.params.id);
+            if (post) {
+                this.id = post.id;
+                this.title = post.title;
+                this.description = post.description;
+            }
+        },
+        mounted() {
+            Materialize.updateTextFields();
+        },
+        beforeRouteUpdate() {
+            let post = this.$store.getters['posts/getPost'](this.$route.params.id);
+            let user = this.$store.getters['currentUser/user'].username;
+            if (post.user != user.username) this.$router.push({name: 'home'});
         }
     }
 </script>

@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="post-control" v-if="author">
-                <router-link to="/" class="edit teal-text">
+                <router-link :to="{name: 'edit', params: {id: post.id}}" class="edit teal-text">
                     <i class="material-icons tiny">edit</i> Edit
                 </router-link>
                 <a class="delete teal-text" @click.prevent="removePost">

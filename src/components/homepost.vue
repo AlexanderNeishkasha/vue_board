@@ -20,7 +20,7 @@
             {{ post.description }}
         </div>
         <div class="post-control" v-if="author">
-            <router-link to="/" class="edit teal-text">Edit</router-link>
+            <router-link :to="{name: 'edit', params: {id: post.id}}" class="edit teal-text">Edit</router-link>
             <a href="#delete" class="delete teal-text" @click.prevent="removePost">Delete</a>
         </div>
     </div>

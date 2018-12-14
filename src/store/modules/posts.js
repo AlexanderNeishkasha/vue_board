@@ -32,6 +32,12 @@ export default {
             let post = state.posts.find((item) => item.id == id);
             state.posts.splice(state.posts.indexOf(post), 1);
             localStorage.setItem('posts', JSON.stringify(state.posts));
+        },
+        editPost(state, post) {
+            let statePost = state.posts.find((item) => item.id == post.id);
+            statePost.title = post.title;
+            statePost.description = post.description;
+            localStorage.setItem('posts', JSON.stringify(state.posts));
         }
     },
     actions: {
@@ -44,6 +50,9 @@ export default {
         },
         removePost(store, id) {
             store.commit('removePost', id);
+        },
+        editPost(store, post) {
+            store.commit('editPost', post);
         }
     }
 }

@@ -16,11 +16,15 @@ export default new VueRouter({
             component: AppPosts
         },
         {
-            path: '/edit',
-            name: 'create',
+            path: '/edit/:id?',
+            name: 'edit',
             component: AppEditform,
             beforeEnter: (to, from, next) => {
-                if (store.getters['currentUser/user'].username != undefined) next();
+                let post = store.getters['posts/getPost'](to.params.id);
+                if (
+                    (post && store.getters['currentUser/user'].username == post.user) ||
+                    (!post && store.getters['currentUser/user'].username != undefined)
+                ) next();
                 else next({name: 'home'});
             }
         },

@@ -12,5 +12,4 @@ export const store =  new Vuex.Store({
         currentUser,
         posts
     },
-    strict: process.env.NODE_ENV !== 'production'
 });
