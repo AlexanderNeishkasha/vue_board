@@ -18,5 +18,7 @@
 <style scoped>
     .content {
         padding: 0 10px 10px 10px;
+        position: relative;
+        z-index: 2;
     }
 </style>

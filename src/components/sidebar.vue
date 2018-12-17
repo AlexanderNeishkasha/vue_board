@@ -34,5 +34,7 @@
 <style scoped>
     .sidebar {
         margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
     }
 </style>
